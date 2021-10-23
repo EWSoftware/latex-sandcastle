@@ -1,7 +1,7 @@
 ## This project has been retired and no longer supported
 
 Requirements:
-Sandcastle Help File Builder v2015.7.25.0 or later
+Sandcastle Help File Builder v2021.10.23.0 or later
 
 Instructions
 
