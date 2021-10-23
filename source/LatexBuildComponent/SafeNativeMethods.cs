@@ -19,11 +19,12 @@
 
 using System.Runtime.InteropServices;
 
-namespace LatexBuildComponent
+namespace Cuda.Latex
 {
-    public static class SafeNativeMethods
+    internal static class SafeNativeMethods
     {
         [DllImport("mimetex.dll", CharSet = CharSet.Ansi, ExactSpelling = true, SetLastError = false)] 
-        public static extern void CreateGifFromEq([MarshalAs(UnmanagedType.LPStr)] string expression, [MarshalAs(UnmanagedType.LPStr)] string gifFileName, [MarshalAs(UnmanagedType.LPStr)] string defaultSize);
+        public static extern void CreateGifFromEq([MarshalAs(UnmanagedType.LPStr)] string expression,
+            [MarshalAs(UnmanagedType.LPStr)] string gifFileName, [MarshalAs(UnmanagedType.LPStr)] string defaultSize);
     }
 }

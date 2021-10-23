@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2008-2015 Marcus Cuda - http://marcuscuda.com
  *
  *  This file is part of LaTeX Build Component.
@@ -19,21 +19,20 @@
  * 08/30/2015 - EFW - Updated for use with the latest release of the Sandcastle Help File Builder
  */
 
+// Ignore Spelling: expr src img html
+
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.Composition.Hosting;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Windows.Forms;
 using System.Xml;
-using System.Xml.Linq;
 using System.Xml.XPath;
 
 using Sandcastle.Core.BuildAssembler;
 using Sandcastle.Core.BuildAssembler.BuildComponent;
 
-namespace LatexBuildComponent
+namespace Cuda.Latex
 {
     /// <summary>
     /// Converts the code inside a latex tag into a GIF
@@ -49,7 +48,7 @@ namespace LatexBuildComponent
         /// <summary>
         /// This is used to create a new instance of the build component used to generate LaTeX images
         /// </summary>
-        [BuildComponentExport("LaTeX Build Component", IsVisible = true, IsConfigurable = true,
+        [BuildComponentExport("LaTeX Build Component", IsVisible = true,
           Version = AssemblyInfo.ProductVersion, Copyright = AssemblyInfo.Copyright,
           Description = "This build component converts LaTeX code into images")]
         public sealed class Factory : BuildComponentFactory
@@ -72,37 +71,9 @@ namespace LatexBuildComponent
             }
 
             /// <inheritdoc />
-            public override string DefaultConfiguration
-            {
-                get
-                {
-                    return @"<helpType value=""{@HelpFileFormat}"" />
+            public override string DefaultConfiguration => @"<helpType value=""{@HelpFileFormat}"" />
 <basePath value=""{@WorkingFolder}"" />
 <fontSize value=""3"" />";
-                }
-            }
-
-            /// <inheritdoc />
-            public override string ConfigureComponent(string currentConfiguration, CompositionContainer container)
-            {
-                // Open the dialog to edit the configuration
-                using(var dlg = new LatexConfigDlg(currentConfiguration))
-                {
-                    // Get the modified configuration if OK was clicked
-                    if(dlg.ShowDialog() == DialogResult.OK)
-                    {
-                        _fontSize = dlg.FontSize;
-
-                        var config = XElement.Parse(currentConfiguration);
-
-                        config.Element("fontSize").Attribute("value").SetValue(_fontSize);
-                        currentConfiguration = config.ToString();
-                    }
-                }
-
-                // Return the configuration data
-                return currentConfiguration;
-            }
         }
         #endregion
 
@@ -140,6 +111,9 @@ namespace LatexBuildComponent
         /// <inheritdoc />
         public override void Initialize(XPathNavigator configuration)
         {
+            if(configuration == null)
+                throw new ArgumentNullException(nameof(configuration));
+
             var nav = configuration.SelectSingleNode("fontSize");
 
             if(nav != null)
@@ -155,6 +129,9 @@ namespace LatexBuildComponent
         /// <param name="key">The key (member name) of the item being documented.</param>
         public override void Apply(XmlDocument document, string key)
         {
+            if(document == null)
+                throw new ArgumentNullException(nameof(document));
+
             var latexList = document.SelectNodes("//latex");
 
             if(latexList == null)
@@ -240,21 +217,21 @@ namespace LatexBuildComponent
                 var type = types[i].Trim();
 
                 string path;
-                if(type.Equals("HtmlHelp1", StringComparison.InvariantCultureIgnoreCase))
+                if(type.Equals("HtmlHelp1", StringComparison.OrdinalIgnoreCase))
                 {
                     path = @"Output\HtmlHelp1\Html\";
                 }
-                else if(type.Equals("Website", StringComparison.InvariantCultureIgnoreCase))
+                else if(type.Equals("Website", StringComparison.OrdinalIgnoreCase))
                 {
                     path = @"Output\Website\Html\";
                 }
-                else if(type.Equals("MSHelpViewer", StringComparison.InvariantCultureIgnoreCase))
+                else if(type.Equals("MSHelpViewer", StringComparison.OrdinalIgnoreCase))
                 {
                     path = @"Output\MSHelpViewer\Html\";
                 }
                 else
                 {
-                    throw new ArgumentException(String.Format("{0} is not a supported help file format.", type));
+                    throw new ArgumentException($"{type} is not a supported help file format.");
                 }
                 paths[i] = basePath + path;
             }

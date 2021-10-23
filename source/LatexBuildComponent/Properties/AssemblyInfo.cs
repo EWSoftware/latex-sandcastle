@@ -1,39 +1,30 @@
-﻿using System;
+using System;
 using System.Reflection;
 using System.Resources;
 using System.Runtime.InteropServices;
 
-// General Information about an assembly is controlled through the following 
-// set of attributes. Change these attribute values to modify the information
-// associated with an assembly.
-[assembly: AssemblyTitle("LaTeX Build Component")]
-[assembly: AssemblyDescription("A LaTeX Build Component for the SandCastle Help File Builder.")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Marcus Cuda")]
-[assembly: AssemblyProduct("LaTeX Build Component")]
+// General assembly information
 [assembly: AssemblyCopyright(AssemblyInfo.Copyright)]
-[assembly: AssemblyTrademark("http://marcuscuda.com")]
 [assembly: AssemblyCulture("")]
+[assembly: AssemblyTrademark("http://marcuscuda.com")]
 
-// Resources contained within the assembly are English
-[assembly: NeutralResourcesLanguageAttribute("en")]
-
-[assembly: CLSCompliant(true)]
 [assembly: ComVisible(false)]
 
-// All version numbers for an assembly consists of the following four values:
-//
-//      Year of release     (Matches SHFB release)
-//      Month of release    (Matches SHFB release)
-//      Day of release      (Matches SHFB release)
-//      Revision            (Revision of the plug-in)
-//
+[assembly: CLSCompliant(true)]
+
+// Resources contained within the assembly are English
+[assembly: NeutralResourcesLanguage("en")]
+
 [assembly: AssemblyVersion(AssemblyInfo.ProductVersion)]
 [assembly: AssemblyFileVersion(AssemblyInfo.ProductVersion)]
+[assembly: AssemblyInformationalVersion(AssemblyInfo.ProductVersion)]
 
-internal static class AssemblyInfo
+// This defines constants that can be used here and in the custom presentation style export attribute
+internal static partial class AssemblyInfo
 {
-    internal const string Copyright = "Copyright \xA9 Marcus Cuda 2008-2015";
+    // Product version
+    public const string ProductVersion = "2021.10.23.0";
 
-    internal const string ProductVersion = "2015.7.25.0";
+    // Assembly copyright information
+    public const string Copyright = "Copyright \xA9 Marcus Cuda 2008-2021";
 }
