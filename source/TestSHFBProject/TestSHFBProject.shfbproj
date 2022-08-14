@@ -34,15 +34,15 @@
     <ComponentConfigurations>
       <ComponentConfig id="LaTeX Build Component" enabled="True">
         <component id="LaTeX Build Component">
-  <helpType value="{@HelpFileFormat}" />
-  <basePath value="{@WorkingFolder}" />
-  <fontSize value="3" />
-</component>
+          <helpType value="{@HelpFileFormat}" />
+          <basePath value="{@WorkingFolder}" />
+          <fontSize value="3" />
+        </component>
       </ComponentConfig>
     </ComponentConfigurations>
-    <HelpFileFormat>HtmlHelp1</HelpFileFormat>
+    <HelpFileFormat>Website</HelpFileFormat>
     <SyntaxFilters>Standard</SyntaxFilters>
-    <PresentationStyle>VS2013</PresentationStyle>
+    <PresentationStyle>Default2022</PresentationStyle>
     <CleanIntermediates>True</CleanIntermediates>
     <KeepLogFile>True</KeepLogFile>
     <DisableCodeBlockComponent>False</DisableCodeBlockComponent>
@@ -50,6 +50,9 @@
     <BuildAssemblerVerbosity>OnlyWarningsAndErrors</BuildAssemblerVerbosity>
     <SaveComponentCacheCapacity>100</SaveComponentCacheCapacity>
     <WarnOnMissingSourceContext>False</WarnOnMissingSourceContext>
+    <NamespaceSummaries>
+      <NamespaceSummaryItem name="TestProject" isDocumented="True" xmlns="">Test project for the LaTeX build component.</NamespaceSummaryItem>
+    </NamespaceSummaries>
   </PropertyGroup>
   <!-- There are no properties for these groups.  AnyCPU needs to appear in order for Visual Studio to perform
 			 the build.  The others are optional common platform types that may appear. -->

@@ -58,10 +58,10 @@ namespace Cuda.Latex
             /// </summary>
             public Factory()
             {
-                base.ReferenceBuildPlacement = new ComponentPlacement(PlacementAction.Before,
-                    "XSL Transform Component");
-                base.ConceptualBuildPlacement = new ComponentPlacement(PlacementAction.Before,
-                    "XSL Transform Component");
+                this.ReferenceBuildPlacement = new ComponentPlacement(PlacementAction.Before,
+                    "Transform Component");
+                this.ConceptualBuildPlacement = new ComponentPlacement(PlacementAction.Before,
+                    "Transform Component");
             }
 
             /// <inheritdoc />
@@ -100,7 +100,7 @@ namespace Cuda.Latex
         /// <param name="configuration">The configuration information</param>
         /// <exception cref="System.Configuration.ConfigurationErrorsException">This is thrown if an error is detected in the
         /// configuration.</exception>
-        public LatexBuildComponent(BuildAssemblerCore assembler) : base(assembler)
+        public LatexBuildComponent(IBuildAssembler assembler) : base(assembler)
         {
         }
         #endregion
