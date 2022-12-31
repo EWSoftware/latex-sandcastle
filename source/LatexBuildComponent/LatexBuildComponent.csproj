@@ -37,7 +37,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="System.ComponentModel.Composition" Version="6.0.0" />
-		<PackageReference Include="EWSoftware.Sandcastle.Core" Version="2022.8.14" />
+		<PackageReference Include="EWSoftware.Sandcastle.Core" Version="2022.12.30" />
 	</ItemGroup>
 
 	<!-- Include the mimetex and configuration UI assembly in the package -->
