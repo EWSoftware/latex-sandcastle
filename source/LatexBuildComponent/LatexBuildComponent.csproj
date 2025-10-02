@@ -36,18 +36,18 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="System.ComponentModel.Composition" Version="9.0.3" />
-		<PackageReference Include="EWSoftware.Sandcastle.Core" Version="2025.3.22" />
+		<PackageReference Include="System.ComponentModel.Composition" Version="9.0.9" />
+		<PackageReference Include="EWSoftware.Sandcastle.Core" Version="2025.9.30" />
 	</ItemGroup>
 
 	<!-- Include the mimetex and configuration UI assembly in the package -->
 	<ItemGroup>
-		<None Include="..\LatexBuildComponentUI\bin\$(Configuration)\net472\Cuda.Latex.ConfigUI.dll">
+		<None Include="..\LatexBuildComponentUI\bin\$(Configuration)\net48\Cuda.Latex.ConfigUI.dll">
 			<Pack>true</Pack>
 			<PackagePath>tools\</PackagePath>
 			<Visible>false</Visible>
 		</None>
-		<None Include="..\out\x86\mimetex.dll">
+		<None Include="..\out\x64\mimetex.dll">
 			<Pack>true</Pack>
 			<PackagePath>tools\</PackagePath>
 			<Visible>false</Visible>

@@ -82,7 +82,7 @@ namespace Cuda.Latex
 
         private readonly UnicodeEncoding _encoding = new UnicodeEncoding();
         private readonly SHA256 _hasher = new SHA256CryptoServiceProvider();
-        private readonly IDictionary<byte[], string> _imgNameCache = new Dictionary<byte[], string>(new KeyComparer());
+        private readonly Dictionary<byte[], string> _imgNameCache = new Dictionary<byte[], string>(new KeyComparer());
 
         private string[] _paths;
         private uint _count = 1;
@@ -159,7 +159,7 @@ namespace Cuda.Latex
 
                 var src = document.CreateAttribute("src");
                 src.Value = "../html/" + filename;
-                XmlNode img = document.CreateElement("img");
+                XmlElement img = document.CreateElement("img");
                 img.Attributes.Append(src);
                 code.ParentNode.ReplaceChild(img, code);
             }
@@ -177,13 +177,12 @@ namespace Cuda.Latex
         {
             var hash = _hasher.ComputeHash(_encoding.GetBytes(xml));
 
-            if(_imgNameCache.ContainsKey(hash))
-            {
-                return new Tuple<bool, string>(true, _imgNameCache[hash]);
-            }
+            if(_imgNameCache.TryGetValue(hash, out string value))
+                return new Tuple<bool, string>(true, value);
 
             var filename = "img_" + _count++ + ".gif";
             _imgNameCache.Add(hash, filename);
+
             return new Tuple<bool, string>(false, filename);
         }
 
@@ -202,9 +201,7 @@ namespace Cuda.Latex
         private static string[] GetWorkingDirectories(XPathNavigator configuration)
         {
             var basePath = GetBasePath(configuration);
-            var nav = configuration.SelectSingleNode("helpType");
-
-            if(nav == null)
+            var nav = configuration.SelectSingleNode("helpType") ??
                 throw new ArgumentException("helpType not specified in the configuration file.");
 
             var selected = nav.GetAttribute("value", String.Empty);

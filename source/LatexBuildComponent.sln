@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.32630.194
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36301.6
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mimetex", "mimetex\mimetex.vcxproj", "{3712E77E-1176-4F47-8B32-C731FAAE8646}"
 EndProject
@@ -25,8 +25,8 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3712E77E-1176-4F47-8B32-C731FAAE8646}.Debug|Any CPU.ActiveCfg = Debug|Win32
-		{3712E77E-1176-4F47-8B32-C731FAAE8646}.Debug|Any CPU.Build.0 = Debug|Win32
+		{3712E77E-1176-4F47-8B32-C731FAAE8646}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{3712E77E-1176-4F47-8B32-C731FAAE8646}.Debug|Any CPU.Build.0 = Debug|x64
 		{3712E77E-1176-4F47-8B32-C731FAAE8646}.Debug|x64.ActiveCfg = Debug|x64
 		{3712E77E-1176-4F47-8B32-C731FAAE8646}.Debug|x64.Build.0 = Debug|x64
 		{3712E77E-1176-4F47-8B32-C731FAAE8646}.Debug|x86.ActiveCfg = Release|Win32
